@@ -18,3 +18,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+ 
+CMD jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
