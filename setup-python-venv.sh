@@ -3,7 +3,7 @@
 sudo apt-get update && sudo apt-get install -y git python3 python3-pip python3-venv \
      ninja-build cmake clang-9 llvm-9 llvm-9-dev llvm-9-tools
 
-[ -d "venv/" ] echo Virtual environment is already created. Keep it
+[ -d "venv/" ] && echo Virtual environment is already created. Keep it
 [ ! -d "venv/" ] && python3 -m venv venv/
 . venv/bin/activate
 
