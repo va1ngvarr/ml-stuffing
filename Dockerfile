@@ -7,9 +7,10 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y tzdata
 COPY venv/ /home
 RUN cd /home && ls && . bin/activate
 
-RUN DS_BUILD_OPS=0 pip install deepspeed
-RUN pip install --upgrade pip && git clone https://github.com/NVIDIA/apex && cd apex \
-    && CUDA_HOME='/usr/local/cuda' pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
+RUN pip install --upgrade pip && DS_BUILD_OPS=0 pip install deepspeed
+RUN git clone https://github.com/NVIDIA/apex && cd apex \
+    && CUDA_HOME='/usr/local/cuda' TORCH_CUDA_ARCH_LIST="compute capability" \
+    pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
 FROM nvidia/cuda:11.6.2-base-ubuntu20.04 as production
