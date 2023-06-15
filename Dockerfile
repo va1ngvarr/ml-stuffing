@@ -8,7 +8,7 @@ COPY venv/ /home
 RUN cd /home && ls && . bin/activate
 
 RUN DS_BUILD_OPS=0 pip install deepspeed
-RUN git clone https://github.com/NVIDIA/apex && cd apex \
+RUN pip install --upgrade pip && git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check \
     --no-cache-dir --no-build-isolation --config-settings \
     "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./
