@@ -9,6 +9,7 @@ COPY requirements.txt /
 RUN python3 -m venv venv/ && . venv/bin/activate
 
 ENV DS_BUILD_OPS=0
+ENV TORCH_CUDA_ARCH_LIST=Turing
 RUN pip install --upgrade pip && pip install -r requirements.txt \
     --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111 \
     && pip install deepspeed
