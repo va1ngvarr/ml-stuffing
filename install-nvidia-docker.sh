@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt-get update && sudo apt install curl
+sudo apt-get update && sudo apt install -y curl
 
 # Install latest driver that supports our nvidia card
 sudo ubuntu-drivers autoinstall
