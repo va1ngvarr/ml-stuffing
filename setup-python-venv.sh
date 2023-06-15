@@ -1,7 +1,6 @@
 #!/bin/sh
 
-sudo apt-get update && sudo apt-get install -y git python3 python3-pip python3-venv \
-     ninja-build cmake clang-9 llvm-9 llvm-9-dev llvm-9-tools libaio-dev
+sudo apt-get update && sudo apt-get install -y python3 python3-pip python3-venv
 
 [ -d "venv/" ] && echo Virtual environment is already created. Keep it
 [ ! -d "venv/" ] && python3 -m venv venv/
@@ -21,14 +20,6 @@ pip install torch==1.8.2 \
     --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
 
 pip install -r requirements.txt
-
-git clone https://github.com/NVIDIA/apex
-
-cd apex && pip install -v --disable-pip-version-check \
-    --no-cache-dir --no-build-isolation --config-settings \
-    "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./
-
-rm -rf apex
 
 
 # PORT=5000
