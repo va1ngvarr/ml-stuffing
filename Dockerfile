@@ -18,6 +18,3 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
- 
-CMD python3 -c "import torch; print(torch.cuda.is_available())" \
-    && jupyter notebook --ip 0.0.0.0 --no-browser --port=8000
