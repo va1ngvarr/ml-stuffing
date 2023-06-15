@@ -7,10 +7,8 @@ sudo apt-get update && sudo apt-get install -y git python3 python3-pip python3-v
 [ ! -d "venv/" ] && python3 -m venv venv/
 . venv/bin/activate
 
-export DS_BUILD_CPU_ADAM=1
-export DS_BUILD_SPARSE_ATTN=1
-
-export DS_BUILD_OPS=1
+# export DS_BUILD_CPU_ADAM=1
+# export DS_BUILD_SPARSE_ATTN=1
 
 # CUDA 11.1
 # pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
@@ -21,12 +19,10 @@ export DS_BUILD_OPS=1
 # CUDA 10.1
 # pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 
-pip install --upgrade pip && pip install torch torchvision torchaudio 
-
-# pip install torch==1.8.2 \
-#    torchvision==0.9.2 torchaudio==0.8.2 triton==1.0.0 \
-#    --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
-
+pip install torch==1.8.2 \
+    torchvision==0.9.2 torchaudio==0.8.2 triton==1.0.0 \
+    --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
+DS_BUILD_OPS=0 pip install deepspeed
 pip install -r requirements.txt
 
 git clone https://github.com/NVIDIA/apex && cd apex
