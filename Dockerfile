@@ -15,5 +15,7 @@ RUN git clone https://github.com/NVIDIA/apex && cd apex \
 
 FROM nvidia/cuda:11.6.2-base-ubuntu20.04 as production
 
-COPY --from=build /venv .
+COPY --from=build /home/ /home
+RUN cd /home && ls && . bin/activate
+
 CMD python3 -c "import torch; print(torch.cuda.is_available())"
