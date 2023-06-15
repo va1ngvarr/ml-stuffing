@@ -1,0 +1,17 @@
+#!/bin/sh
+
+sudo apt-get update && sudo apt-get install git python3 python3-pip \ 
+     ninja-build cmake clang-9 llvm-9 llvm-9-dev llvm-9-tools
+
+[ ! -d "venv/" ] && python3 -m venv venv/
+. venv/bin/activate
+
+export DS_BUILD_CPU_ADAM=1
+export DS_BUILD_SPARSE_ATTN=1
+
+pip install --upgrade pip
+pip install torch==1.9 triton==1.0.0 && pip install -r requirements.txt
+
+git clone https://github.com/NVIDIA/apex && cd apex
+pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings \ 
+    "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./

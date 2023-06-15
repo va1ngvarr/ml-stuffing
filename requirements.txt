@@ -1,0 +1,6 @@
+deepspeed
+datasets
+accelerate
+evaluate
+packaging
+huggingface_hub
