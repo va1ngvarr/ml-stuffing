@@ -22,10 +22,12 @@ pip install torch==1.8.2 \
 
 pip install -r requirements.txt
 
-git clone https://github.com/NVIDIA/apex && cd apex
-pip install -v --disable-pip-version-check \
+git clone https://github.com/NVIDIA/apex
+
+cd apex && pip install -v --disable-pip-version-check \
     --no-cache-dir --no-build-isolation --config-settings \
     "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./
+
 rm -rf apex
 
 
