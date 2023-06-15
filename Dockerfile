@@ -13,7 +13,3 @@ ENV TORCH_CUDA_ARCH_LIST=Turing
 RUN pip install --upgrade pip && pip install -r requirements.txt \
     --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111 \
     && pip install deepspeed
-
-FROM nvidia/cuda:11.6.2-base-ubuntu20.04 as production
-
-COPY --from=build /venv /venv
