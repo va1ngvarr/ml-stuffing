@@ -10,8 +10,8 @@ RUN python3 -m venv venv/ && . venv/bin/activate
 
 ENV DS_BUILD_OPS=0
 RUN pip install --upgrade pip && pip install -r requirements.txt \
-    && pip install torch==1.8.2 torchvision==0.9.2 torchaudio==0.8.2 \
-    triton==1.0.0 deepspeed --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
+    --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111 \
+    && pip install deepspeed
 
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
