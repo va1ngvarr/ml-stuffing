@@ -10,7 +10,7 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 
 # Get nvidia repos
 curl -s -L https://nvidia.github.io/libnvidia-container/gpgkey | sudo apt-key add -
-curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list \ 
+curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list \
     | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
 # Install docker and nvidia cuda toolkit
