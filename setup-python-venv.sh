@@ -9,6 +9,7 @@ sudo apt-get update && sudo apt-get install -y git python3 python3-pip python3-v
 
 export DS_BUILD_CPU_ADAM=1
 export DS_BUILD_SPARSE_ATTN=1
+export DS_BUILD_OPS=0
 
 pip install --upgrade pip
 pip install torch==1.9 triton==1.0.0 && pip install -r requirements.txt
