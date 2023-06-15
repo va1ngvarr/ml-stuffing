@@ -15,14 +15,12 @@ COPY requirements.txt .
 RUN apt-get update && apt-get install -y tzdata \
     git ninja-build libaio-dev
 
-RUN pip install --upgrade pip && pip install -r requirements.txt \
-    --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111 \
-    && pip install deepspeed
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
  
-CMD . venv/bin/activate && python3 -c "import torch; print(torch.cuda.is_available())" \
-    && iptables -A INPUT -p tcp --dport $(PORT) -j ACCEPT \
-    && jupyter notebook --ip 0.0.0.0 --no-browser --port=$(PORT)
+CMD python3 -c "import torch; print(torch.cuda.is_available())" \
+    && iptables -A INPUT -p tcp --dport ${PORT} -j ACCEPT \
+    && jupyter notebook --ip 0.0.0.0 --no-browser --port=${PORT}
