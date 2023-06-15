@@ -16,7 +16,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt \
 
 FROM nvidia/cuda:11.6.2-base-ubuntu20.04 as production
 
-COPY --from=build ./venv /
+COPY --from=build ./venv ./
 ENV PORT=5000
 CMD . venv/bin/activate && python3 -c "import torch; print(torch.cuda.is_available())" \
     && iptables -A INPUT -p tcp --dport $(PORT) -j ACCEPT \
