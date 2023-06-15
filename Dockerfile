@@ -7,9 +7,8 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y tzdata
 COPY requirements.txt /
 RUN python3 -m venv venv/ && . venv/bin/activate
 
-pip install -r requirements.txt
-
-RUN pip install --upgrade pip && DS_BUILD_OPS=0 pip install deepspeed
+RUN pip install --upgrade pip && pip install -r requirements.txt \
+    && DS_BUILD_OPS=0 pip install deepspeed
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
