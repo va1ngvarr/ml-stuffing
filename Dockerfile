@@ -4,7 +4,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y tzdata
     git ninja-build cmake clang-9 llvm-9 llvm-9-dev llvm-9-tools libaio-dev
 
 COPY venv/ /home
-RUN . /home/venv/bin/activate
+RUN ls /home && . /home/venv/bin/activate
 
 RUN DS_BUILD_OPS=0 pip install deepspeed
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
