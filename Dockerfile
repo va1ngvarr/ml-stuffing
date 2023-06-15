@@ -14,11 +14,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt \
     --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111 \
     && pip install deepspeed
 
-ENV TORCH_CUDA_ARCH_LIST=Volta;Turing;Kepler+Tesla
-RUN git clone https://github.com/NVIDIA/apex && cd apex \
-    && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
-    --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-
 FROM nvidia/cuda:11.6.2-base-ubuntu20.04 as production
 
 COPY --from=build ./venv /
@@ -26,3 +21,4 @@ ENV PORT=5000
 CMD . venv/bin/activate && python3 -c "import torch; print(torch.cuda.is_available())" \
     && iptables -A INPUT -p tcp --dport $(PORT) -j ACCEPT \
     && jupyter notebook --ip 0.0.0.0 --no-browser --port=$(PORT)
+
