@@ -3,4 +3,5 @@ datasets
 accelerate
 evaluate
 packaging
+jupyter
 huggingface_hub
