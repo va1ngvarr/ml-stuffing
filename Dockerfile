@@ -7,8 +7,6 @@ ARG PYTHONUNBUFFERED=1
 ARG DS_BUILD_OPS=0
 ARG TORCH_CUDA_ARCH_LIST=Turing
 
-ARG PORT=5000
-
 WORKDIR /tmp/
 COPY requirements.txt .
 
@@ -22,5 +20,4 @@ RUN git clone https://github.com/NVIDIA/apex && cd apex \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
  
 CMD python3 -c "import torch; print(torch.cuda.is_available())" \
-    && iptables -A INPUT -p tcp --dport ${PORT} -j ACCEPT \
-    && jupyter notebook --ip 0.0.0.0 --no-browser --port=${PORT}
+    && jupyter notebook --ip 0.0.0.0 --no-browser --port=8000
