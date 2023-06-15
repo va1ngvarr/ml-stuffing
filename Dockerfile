@@ -14,6 +14,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt \
     --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111 \
     && pip install deepspeed
 
+ENV TORCH_CUDA_ARCH_LIST="compute capability"
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
