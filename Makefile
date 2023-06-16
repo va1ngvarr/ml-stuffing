@@ -19,7 +19,7 @@ jupyter:
 	##    ./data      -> /data           Put data here!
 	##    ./notebooks -> /notebooks      Find notebooks here!
 	##    -----------------------------------------------------
-    docker container run \
+	docker container run \
 		--gpus all -it \
 		-p $(PORT):$(PORT) \
 		-v $(PWD)/notebooks/:$(APP_DIR)/notebooks/ \
