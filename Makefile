@@ -6,7 +6,7 @@ APP_DIR=/app
 
 # The docker image to launch
 APP_NAME=cudaenv
-APP_TAG=docker.io/library/$(APP_NAME)
+APP_TAG=$(APP_NAME):latest
 
 build:
 	docker image build \
