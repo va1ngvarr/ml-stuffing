@@ -21,5 +21,3 @@ RUN git clone https://github.com/NVIDIA/apex && cd apex \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
 WORKDIR /app
- 
-CMD jupyter notebook --ip 0.0.0.0 --no-browser --allow-root

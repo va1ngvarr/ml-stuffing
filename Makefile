@@ -26,4 +26,4 @@ jupyter:
 		-v $(PWD)/data:/data \
 		$(APP_TAG) \
 		jupyter notebook --ip 0.0.0.0 --port $(PORT) \
-		--no-browser --allow-root
+		--no-browser
