@@ -1,4 +1,3 @@
-# Avoid 8888 if you run local notebooks on that!
 PORT=8888
 
 # Your app root in the container.
@@ -13,12 +12,6 @@ build:
 		--tag '$(APP_NAME)' .
 
 jupyter:
-	## Launch jupyter notebook from our container, mapping two folders
-	##    Local          Container       Notes
-	##    -----------------------------------------------------
-	##    ./data      -> /data           Put data here!
-	##    ./notebooks -> /notebooks      Find notebooks here!
-	##    -----------------------------------------------------
 	docker container run \
 		--gpus all -it \
 		-p $(PORT):$(PORT) \
