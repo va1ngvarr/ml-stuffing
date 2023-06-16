@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y tzdata \
     git ninja-build libaio-dev
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
-RUN git clone transformers && cd transformers && pip install ./ && cd .
+RUN git clone https://github.com/huggingface/transformers && cd transformers \
+    && pip install --no-cache-dir -e ./ && cd .
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
