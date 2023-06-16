@@ -14,9 +14,11 @@ RUN apt-get update && apt-get install -y tzdata \
     git ninja-build libaio-dev
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
-
+RUN git clone transformers && cd transformers && pip install ./
 RUN git clone https://github.com/NVIDIA/apex && cd apex \
     && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation \
     --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+
+WORKDIR /app
  
 CMD jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
