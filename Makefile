@@ -19,4 +19,5 @@ jupyter:
 		-v $(PWD)/data:/data \
 		$(APP_TAG) \
 		jupyter notebook --ip 0.0.0.0 --port $(PORT) \
-		--no-browser
+		--NotebookApp.allow_origin=* --NotebookApp.allow_remote_access=1 \
+		--no-browser --allow-root
