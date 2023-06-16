@@ -1,5 +1,5 @@
 # ml-stuffing
-ML-stuffing scripts for Ubuntu-server
+ML-stuffing CUDA scripts for Ubuntu-server with PyTorch, Apex, Deepspeed
 
 ## Usage
 After `sh ./install-nvidia-docker.sh` done, please run `reboot`
@@ -15,4 +15,9 @@ Or use make to build and run with Jupyter Notebook
 ```
 make build
 make jupyter
+```
+
+Also minimal test, if cuda works, looks like this:
+```
+docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 ```
